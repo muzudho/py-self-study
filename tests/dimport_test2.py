@@ -1,8 +1,8 @@
 """
 python -m tests.dimport_test2 -m src.hello -c Hello
 """
-from src.dimport import Dimport
 import argparse
+from src.dimport import Dimport
 
 # Command line arguments
 ap = argparse.ArgumentParser()

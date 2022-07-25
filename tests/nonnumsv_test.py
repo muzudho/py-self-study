@@ -1,8 +1,19 @@
 """
-python -m tests.nonnumsv_test -m src.nonnumsv
+python -m tests.nonnumsv_test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 """
-from src.nonnumsv import NonNumSV
+import argparse
+from src.dimport import Dimport
 
+# Command line arguments
+ap = argparse.ArgumentParser()
+ap.add_argument('-m', help='module')
+ap.add_argument('-c', help='class')
+args = ap.parse_args()
+
+# Dynamic class import
+NonNumSV = Dimport.load(args.m, args.c)
+
+# Code
 vec = NonNumSV.parse("ABC123DEF456GHI")
 
 vec_size = len(vec)
