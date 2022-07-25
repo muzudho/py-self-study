@@ -290,4 +290,6 @@ Hello, world!!
 
 # 関連する記事
 
-📖 [O_9o0 Pythonを自習しようぜ（＾～＾）？](https://crieit.net/posts/Python-62de8a581dbea)
+📖 [Python自習O_9o0 目次だぜ（＾～＾）](https://crieit.net/posts/Python-62de8a581dbea)  
+
+おわり
