@@ -257,7 +257,7 @@ Hello, world!!
 
 ```py
 """
-python -m tests.dimport_test2 -m src.hello
+python -m tests.dimport_test2 -m src.hello -c Hello
 """
 from src.dimport import Dimport
 import argparse
@@ -265,9 +265,10 @@ import argparse
 # Command line arguments
 ap = argparse.ArgumentParser()
 ap.add_argument('-m', help='module')
+ap.add_argument('-c', help='class')
 args = ap.parse_args()
 
-print(Dimport.load(args.m, "Hello").message)
+print(Dimport.load(args.m, args.c).message)
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de69c8ba5ab.png)  
@@ -276,7 +277,7 @@ print(Dimport.load(args.m, "Hello").message)
 Input:  
 
 ```py
-python -m tests.dimport_test2 -m src.hello
+python -m tests.dimport_test2 -m src.hello -c Hello
 ```
 
 Output:  

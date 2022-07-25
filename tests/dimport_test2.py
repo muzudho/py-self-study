@@ -1,5 +1,5 @@
 """
-python -m tests.dimport_test2 -m src.hello
+python -m tests.dimport_test2 -m src.hello -c Hello
 """
 from src.dimport import Dimport
 import argparse
@@ -7,6 +7,7 @@ import argparse
 # Command line arguments
 ap = argparse.ArgumentParser()
 ap.add_argument('-m', help='module')
+ap.add_argument('-c', help='class')
 args = ap.parse_args()
 
-print(Dimport.load(args.m, "Hello").message)
+print(Dimport.load(args.m, args.c).message)
