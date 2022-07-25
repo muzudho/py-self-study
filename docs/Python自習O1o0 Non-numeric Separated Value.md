@@ -1,6 +1,7 @@
-# O_9o0 前回の記事
+# O_9o0 以前の記事
 
-📖 [Python自習O0o0 クラスを動的に読み込もうぜ（＾～＾）](https://crieit.net/posts/Python-62de830e6dd8e) - Dimport クラス
+📖 [Python自習O_9o0 目次だぜ（＾～＾）](https://crieit.net/posts/Python-62de8a581dbea) - 目次  
+📖 [Python自習O0o0 クラスを動的に読み込もうぜ（＾～＾）](https://crieit.net/posts/Python-62de830e6dd8e) - Dimport クラス  
 
 # O0o0 今回の記事
 
@@ -71,16 +72,19 @@ NonNumSV = Dimport.load(args.m, args.c)
 # Code
 vec = NonNumSV.parse("ABC123DEF456GHI")
 
-vec_size = len(vec)
-if vec_size == 5:
-    print("size is ok")
+if vec is None:
+    print("[Error] vec is none")
 else:
-    print(f"[Error] the size is different. size:{vec_size}")
+    vec_size = len(vec)
+    if vec_size == 5:
+        print("size is ok")
+    else:
+        print(f"[Error] the size is different. size:{vec_size}")
 
-if vec == ["ABC", "123", "DEF", "456", "GHI"]:
-    print("correct!")
-else:
-    print(f"[Error] the response is different. vec:{vec}")
+    if vec == ["ABC", "123", "DEF", "456", "GHI"]:
+        print("correct!")
+    else:
+        print(f"[Error] the response is different. vec:{vec}")
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
@@ -242,5 +246,93 @@ correct!
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　今までは　練習の枠組みを用意したわけだぜ。  
 ここからが本番だぜ」  
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のファイルを作ってくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+👉  │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │    └── 📄 nonnumsv_test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+"""
+python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+"""
+import re
+
+
+class NonNumSVO1o0g1o4o0:
+    """Non-numeric separated value"""
+
+    __pat = re.compile(r"^([A-Z]+)([0-9]+)([A-Z]+)([0-9]+)([A-Z]+)$")
+
+    @staticmethod
+    def parse(text):
+        m = NonNumSVO1o0g1o4o0.__pat.match(text)
+        if m:
+            return [m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)]
+
+        return None
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+👉  │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │    └── 📄 nonnumsv_test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+# ...略...
+
+
+from .o1o0g1o4o0 import NonNumSVO1o0g1o4o0
+
+
+# ...略...
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のコマンドを打鍵してくれだぜ」  
+
+Input:  
+
+```shell
+python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+```
+
+Output:  
+
+```shell
+size is ok
+correct!
+```
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　でけたな」  
 
 おわり

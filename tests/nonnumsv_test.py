@@ -16,13 +16,16 @@ NonNumSV = Dimport.load(args.m, args.c)
 # Code
 vec = NonNumSV.parse("ABC123DEF456GHI")
 
-vec_size = len(vec)
-if vec_size == 5:
-    print("size is ok")
+if vec is None:
+    print("[Error] vec is none")
 else:
-    print(f"[Error] the size is different. size:{vec_size}")
+    vec_size = len(vec)
+    if vec_size == 5:
+        print("size is ok")
+    else:
+        print(f"[Error] the size is different. size:{vec_size}")
 
-if vec == ["ABC", "123", "DEF", "456", "GHI"]:
-    print("correct!")
-else:
-    print(f"[Error] the response is different. vec:{vec}")
+    if vec == ["ABC", "123", "DEF", "456", "GHI"]:
+        print("correct!")
+    else:
+        print(f"[Error] the response is different. vec:{vec}")

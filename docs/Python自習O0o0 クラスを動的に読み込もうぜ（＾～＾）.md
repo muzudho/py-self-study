@@ -1,3 +1,9 @@
+# O_9o0 以前の記事
+
+📖 [Python自習O_9o0 目次だぜ（＾～＾）](https://crieit.net/posts/Python-62de8a581dbea) - 目次  
+
+# O0o0 今回の記事
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de69c8ba5ab.png)  
 「　Python でクラスを動的に読み込むの、どうやるんだぜ？」  
 
@@ -10,7 +16,7 @@
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de69fef19a3.png)  
 「　いろんな記事があって　どれがベストプラクティスか分かんないのよね」  
 
-# クラスの静的インポート
+# O1o0 クラスの静的インポート
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de69c8ba5ab.png)  
 「　まず　ふつうにクラスをロードしてみようぜ。  
@@ -76,7 +82,7 @@ Hello, world!!
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de69e692e4f.png)  
 「　これだと `from src.hello import Hello` と、クラスの名前が埋め込んであるから、このクラスを読み込むな」  
 
-# クラスの動的インポート
+# O2o0 クラスの動的インポート
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de69fef19a3.png)  
 「　そのファイルか、クラスの名前を コマンドラインから指定したいのよ。  
@@ -237,7 +243,7 @@ Hello, world!!
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de69fef19a3.png)  
 「　👆 クラスの動的読取はできそうね」
 
-# コマンドライン引数に対応
+# O3o0 コマンドライン引数に対応
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de69c8ba5ab.png)  
 「　👇 以下のファイルを作成してくれだぜ」  
@@ -259,8 +265,8 @@ Hello, world!!
 """
 python -m tests.dimport_test2 -m src.hello -c Hello
 """
-from src.dimport import Dimport
 import argparse
+from src.dimport import Dimport
 
 # Command line arguments
 ap = argparse.ArgumentParser()
@@ -288,6 +294,10 @@ Hello, world!!
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de69c8ba5ab.png)  
 「　👆　でけたな」
+
+# 次の記事
+
+📖 [Python自習O1o0 Non-numeric Separated Value](https://crieit.net/posts/Python-O1o0-Non-numeric-Separated-Value)  
 
 # 関連する記事
 

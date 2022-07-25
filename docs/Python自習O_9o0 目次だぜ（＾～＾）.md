@@ -14,5 +14,6 @@
 # 目次
 
 📖 [Python自習O0o0 Pythonでクラスを動的に読み込もうぜ（＾～＾）](https://crieit.net/posts/Python-62de830e6dd8e)  
+📖 [Python自習O1o0 Non-numeric Separated Value](https://crieit.net/posts/Python-O1o0-Non-numeric-Separated-Value)  
 
 おわり
