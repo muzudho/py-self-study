@@ -57,7 +57,7 @@ Output:
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv -c NonNumSV
 """
 import argparse
 from src.dimport import Dimport
@@ -112,7 +112,7 @@ else:
 ```
 
 ```py
-class NonNumSVO1o0g1o2o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     @staticmethod
@@ -139,7 +139,12 @@ class NonNumSVO1o0g1o2o0:
 ```
 
 ```py
-from .o1o0g1o2o0 import NonNumSVO1o0g1o2o0
+from .o1o0g1o2o0 import NonNumSV as NonNumSVO1o0g1o2o0
+#    -----------        --------    ------------------
+#    1                  2           3
+# 1. 同じディレクトリーにある o1o0g1o2o0 ディレクトリー
+# 2. クラス
+# 3. クラスの別名
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
@@ -165,7 +170,7 @@ from .o1o0g1o2o0 import NonNumSVO1o0g1o2o0
 # ...略...
 
 
-from .nonnumsv.o1o0g1o2o0 import NonNumSVO1o0g1o2o0
+from .nonnumsv.o1o0g1o2o0 import NonNumSV
 ```
 
 ### O1o2o1o0 コマンド実行
@@ -176,7 +181,7 @@ from .nonnumsv.o1o0g1o2o0 import NonNumSVO1o0g1o2o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o2o0 -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o2o0 -c NonNumSV
 ```
 
 Output:  
@@ -216,7 +221,7 @@ Output:
 ```
 
 ```py
-class NonNumSVO1o0g1o3o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     @staticmethod
@@ -252,7 +257,10 @@ class NonNumSVO1o0g1o3o0:
 ```
 
 ```py
-from .o1o0g1o3o0 import NonNumSVO1o0g1o3o0
+# ...略...
+
+
+from .o1o0g1o3o0 import NonNumSV as NonNumSVO1o0g1o3o0
 
 
 # ...略...
@@ -267,7 +275,7 @@ from .o1o0g1o3o0 import NonNumSVO1o0g1o3o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSV
 ```
 
 Output:  
@@ -311,19 +319,19 @@ correct!
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
 """
 import re
 
 
-class NonNumSVO1o0g1o4o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     __pat = re.compile(r"^([A-Z]+)([0-9]+)([A-Z]+)([0-9]+)([A-Z]+)$")
 
     @staticmethod
     def parse(text):
-        m = NonNumSVO1o0g1o4o0.__pat.match(text)
+        m = NonNumSV.__pat.match(text)
         if m:
             return [m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)]
 
@@ -357,7 +365,7 @@ class NonNumSVO1o0g1o4o0:
 # ...略...
 
 
-from .o1o0g1o4o0 import NonNumSVO1o0g1o4o0
+from .o1o0g1o4o0 import NonNumSV as NonNumSVO1o0g1o4o0
 
 
 # ...略...
@@ -369,7 +377,7 @@ from .o1o0g1o4o0 import NonNumSVO1o0g1o4o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
 ```
 
 Output:  
@@ -414,7 +422,7 @@ correct!
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
 """
 import argparse
 import random
@@ -482,12 +490,14 @@ else:
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
 ```
 
 Output:  
 
 ```plaintext
+question:w_d4,D5P`ZoSk~J"ztA@2h6n=Wr<0E7$IF:{*gvXK-ci)]H(es;y/j+f1qbC?NV!'%}&.x\#aQR8B3TlLY^U|Gmpu[9MO>
+answer:None
 [Error] vec is none
 ```
 
@@ -528,12 +538,12 @@ Output:
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO1o0g1o6o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSV
 """
 import re
 
 
-class NonNumSVO1o0g1o6o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     # * `^` - 文の始端
@@ -550,7 +560,7 @@ class NonNumSVO1o0g1o6o0:
         start = 0
 
         # 数字列か？
-        m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+        m = NonNumSV.__pat_num.match(text[start:])
         if m:
             # 数字列だ
             token = m.group(1)
@@ -559,7 +569,7 @@ class NonNumSVO1o0g1o6o0:
 
         while True:
             # 非数字の文字列か？
-            m = NonNumSVO1o0g1o6o0.__pat_nonnum.match(text[start:])
+            m = NonNumSV.__pat_nonnum.match(text[start:])
             if m is None:
                 break
 
@@ -569,7 +579,7 @@ class NonNumSVO1o0g1o6o0:
             start += len(token)
 
             # 数字列か？
-            m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+            m = NonNumSV.__pat_num.match(text[start:])
             if m is None:
                 break
 
@@ -609,7 +619,13 @@ class NonNumSVO1o0g1o6o0:
 ```
 
 ```py
-from .o1o0g1o6o0 import NonNumSVO1o0g1o6o0
+# ...略...
+
+
+from .o1o0g1o6o0 import NonNumSV as NonNumSVO1o0g1o6o0
+
+
+# ...略...
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
@@ -618,7 +634,7 @@ from .o1o0g1o6o0 import NonNumSVO1o0g1o6o0
 Input:  
 
 ```plaintext
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO1o0g1o6o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSV
 ```
 
 Output:  
@@ -631,5 +647,13 @@ correct!
 
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　答えは合ってるみたいだが、本当に合ってんのかな？」  
+
+## O1o7o0 間違った答えを返そうぜ？
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　じゃあ、わざと答えの一部を　スワップ（入れ替え）して　答えればいいんだぜ」  
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　テストを試そうってのね」  
 
 おわり

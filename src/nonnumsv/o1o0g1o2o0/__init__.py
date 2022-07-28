@@ -1,4 +1,4 @@
-class NonNumSVO1o0g1o2o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     @staticmethod

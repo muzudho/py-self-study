@@ -1,10 +1,10 @@
 """
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO1o0g1o6o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSV
 """
 import re
 
 
-class NonNumSVO1o0g1o6o0:
+class NonNumSV:
     """Non-numeric separated value"""
 
     # * `^` - 文の始端
@@ -21,7 +21,7 @@ class NonNumSVO1o0g1o6o0:
         start = 0
 
         # 数字列か？
-        m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+        m = NonNumSV.__pat_num.match(text[start:])
         if m:
             # 数字列だ
             token = m.group(1)
@@ -30,7 +30,7 @@ class NonNumSVO1o0g1o6o0:
 
         while True:
             # 非数字の文字列か？
-            m = NonNumSVO1o0g1o6o0.__pat_nonnum.match(text[start:])
+            m = NonNumSV.__pat_nonnum.match(text[start:])
             if m is None:
                 break
 
@@ -40,7 +40,7 @@ class NonNumSVO1o0g1o6o0:
             start += len(token)
 
             # 数字列か？
-            m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+            m = NonNumSV.__pat_num.match(text[start:])
             if m is None:
                 break
 

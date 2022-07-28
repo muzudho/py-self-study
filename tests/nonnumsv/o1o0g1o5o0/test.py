@@ -1,5 +1,5 @@
 """
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSV
 """
 import argparse
 import random
