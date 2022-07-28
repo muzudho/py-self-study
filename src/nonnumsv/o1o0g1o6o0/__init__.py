@@ -16,7 +16,7 @@ class NonNumSV:
     __pat_nonnum = re.compile(r"^(\D+)")
 
     @staticmethod
-    def parse(text):
+    def to_answer(text):
         vec = []
         start = 0
 

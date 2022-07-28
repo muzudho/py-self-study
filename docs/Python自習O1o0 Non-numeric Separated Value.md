@@ -43,13 +43,62 @@ Output:
 ## O1o1o0 Test
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
-「　👇 テストを書いて置いたから、これに合うようにコードを書きなさい」  
+「　テストを書いて置いたから、これに合うようにコードを書きなさい」  
+
+### quest.py
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 以下のファイルを新規作成しなさい」  
 
 ```plaintext
     ├── 📂 tests
     │   └── 📂 nonnumsv
     │       └── 📂 o1o0g1o1o0
-👉  │           └── 📄 test.py
+👉  │           └── 📄 quest.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+class Questioner:
+    """出題者"""
+    
+    def make_quiz(self):
+        """答えのある問い作成"""
+        return "ABC123DEF456GHI"
+
+    def check(self, answer, quiz):
+        """答え合わせ"""
+
+        if answer is None:
+            print("[Error] vec is none")
+        else:
+            vec_size = len(answer)
+            if vec_size == 5:
+                print("size is ok")
+            else:
+                print(f"[Error] the size is different. size:{vec_size}")
+
+            if answer == ["ABC", "123", "DEF", "456", "GHI"]:
+                print("correct!")
+            else:
+                print(f"[Error] the response is different. vec:{answer}")
+```
+
+### test.py
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 以下のファイルを新規作成しなさい」  
+
+```plaintext
+    ├── 📂 tests
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+👉  │   │       └── 📄 test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 quest.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -57,59 +106,59 @@ Output:
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o2o0 -c NonNumSV
+Example
+-------
+python -m tests.nonnumsv.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
 """
 import argparse
-from src.dimport import Dimport
+from src.dimport import Dimport  # Dynamic class import
 
-
-def make_quiz():
-    """答えのある問い作成"""
-    return "ABC123DEF456GHI"
-
-
-def solve(quiz):
-    """解く"""
-
-    # Command line arguments
-    ap = argparse.ArgumentParser()
-    ap.add_argument('-m', help='module')
-    ap.add_argument('-c', help='class')
-    args = ap.parse_args()
-
-    # Dynamic class import
-    NonNumSV = Dimport.load(args.m, args.c)
-
-    return NonNumSV.parse(quiz)
-
-
-def check(answer, quiz):
-    """答え合わせ"""
-
-    if answer is None:
-        print("[Error] vec is none")
-    else:
-        vec_size = len(answer)
-        if vec_size == 5:
-            print("size is ok")
-        else:
-            print(f"[Error] the size is different. size:{vec_size}")
-
-        if answer == ["ABC", "123", "DEF", "456", "GHI"]:
-            print("correct!")
-        else:
-            print(f"[Error] the response is different. vec:{answer}")
-
+# Command line arguments
+ap = argparse.ArgumentParser()
+ap.add_argument('--qm', help='questioner module')
+ap.add_argument('--qc', help='questioner class')
+ap.add_argument('--am', help='answerer module')
+ap.add_argument('--ac', help='answerer class')
+args = ap.parse_args()
 
 # Plan
-quiz = make_quiz()
+Questioner = Dimport.load(args.qm, args.qc)
+quest = Questioner()
+quiz = quest.make_quiz()
 
 # Do
-answer = solve(quiz)
+Answerer = Dimport.load(args.am, args.ac)
+answer = Answerer.to_answer(quiz)
 
 # Check
-check(answer, quiz)
+quest.check(answer, quiz)
 ```
+
+### 検索パス
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 以下のファイルを新規作成しなさい」  
+
+```plaintext
+    ├── 📂 tests
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+👉  │   └── 📄 __init__.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+from .nonnumsv.o1o0g1o1o0.quest import Questioner
+```
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　これでどこかに `Answerer` クラスを作って `to_answer()` メソッドを付けてくれれば テストできるわよ」  
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　フーン　じゃあ　スケルトンから作るか」  

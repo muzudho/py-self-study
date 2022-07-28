@@ -27,7 +27,7 @@ def solve(quiz):
     # --------------------
     NonNumSV = Dimport.load(args.m, args.c)
 
-    return NonNumSV.parse(quiz)
+    return NonNumSV.to_answer(quiz)
 
 
 def check(answer, quiz):

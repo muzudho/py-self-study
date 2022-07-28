@@ -10,7 +10,7 @@ class NonNumSV:
     __pat = re.compile(r"^([A-Z]+)([0-9]+)([A-Z]+)([0-9]+)([A-Z]+)$")
 
     @staticmethod
-    def parse(text):
+    def to_answer(text):
         m = NonNumSV.__pat.match(text)
         if m:
             return [m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)]
