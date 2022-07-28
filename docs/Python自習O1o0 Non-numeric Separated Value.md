@@ -63,6 +63,11 @@ import argparse
 from src.dimport import Dimport
 
 
+def make_quiz():
+    """答えのある問い作成"""
+    return "ABC123DEF456GHI"
+
+
 def solve(quiz):
     """解く"""
 
@@ -78,7 +83,7 @@ def solve(quiz):
     return NonNumSV.parse(quiz)
 
 
-def check(answer):
+def check(answer, quiz):
     """答え合わせ"""
 
     if answer is None:
@@ -96,11 +101,14 @@ def check(answer):
             print(f"[Error] the response is different. vec:{answer}")
 
 
-# Do!
-answer = solve(quiz="ABC123DEF456GHI")
+# Plan
+quiz = make_quiz()
 
-# Check!
-check(answer)
+# Do
+answer = solve(quiz)
+
+# Check
+check(answer, quiz)
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
