@@ -1,4 +1,4 @@
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     @staticmethod

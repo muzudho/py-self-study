@@ -1,7 +1,7 @@
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac Answerer
 """
 import argparse
 from src.dimport import Dimport  # Dynamic class import

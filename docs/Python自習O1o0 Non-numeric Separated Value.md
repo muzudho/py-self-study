@@ -108,7 +108,7 @@ class Questioner:
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac Answerer
 """
 import argparse
 from src.dimport import Dimport  # Dynamic class import
@@ -196,7 +196,7 @@ from .nonnumsv.o1o0g1o1o0.quest import Questioner as QuestionerO1o0g1o1o0
 ```
 
 ```py
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     @staticmethod
@@ -229,7 +229,7 @@ class NonNumSV:
 ```
 
 ```py
-from .o1o0g1o2o0 import NonNumSV as NonNumSVO1o0g1o2o0
+from .o1o0g1o2o0 import Answerer as AnswererO1o0g1o2o0
 #    -----------        --------    ------------------
 #    1                  2           3
 # 1. 同じディレクトリーにある o1o0g1o2o0 ディレクトリー
@@ -266,7 +266,7 @@ from .o1o0g1o2o0 import NonNumSV as NonNumSVO1o0g1o2o0
 # ...略...
 
 
-from .nonnumsv.o1o0g1o2o0 import NonNumSV
+from .nonnumsv.o1o0g1o2o0 import Answerer
 ```
 
 ### O1o2o1o0 コマンド実行
@@ -277,7 +277,7 @@ from .nonnumsv.o1o0g1o2o0 import NonNumSV
 Input:  
 
 ```shell
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac Answerer
 ```
 
 Output:  
@@ -326,11 +326,11 @@ Output:
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac Answerer
 """
 
 
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     @staticmethod
@@ -375,7 +375,7 @@ class NonNumSV:
 # ...略...
 
 
-from .o1o0g1o3o0 import NonNumSV as NonNumSVO1o0g1o3o0
+from .o1o0g1o3o0 import Answerer as AnswererO1o0g1o3o0
 
 
 # ...略...
@@ -392,7 +392,7 @@ from .o1o0g1o3o0 import NonNumSV as NonNumSVO1o0g1o3o0
 Input:  
 
 ```shell
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac Answerer
 ```
 
 Output:  
@@ -444,12 +444,12 @@ correct!
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac Answerer
 """
 import re
 
 
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     # * `^` - 行頭
@@ -462,7 +462,7 @@ class NonNumSV:
 
     @staticmethod
     def to_answer(quiz):
-        m = NonNumSV.__pat.match(quiz)
+        m = Answerer.__pat.match(quiz)
         if m:
             # `m.group( )` - 引数の数はパターンの括弧の位置に対応
             return [m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)]
@@ -503,7 +503,7 @@ class NonNumSV:
 # ...略...
 
 
-from .o1o0g1o4o0 import NonNumSV as NonNumSVO1o0g1o4o0
+from .o1o0g1o4o0 import Answerer as AnswererO1o0g1o4o0
 
 
 # ...略...
@@ -517,7 +517,7 @@ from .o1o0g1o4o0 import NonNumSV as NonNumSVO1o0g1o4o0
 Input:  
 
 ```shell
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac Answerer
 ```
 
 Output:  
@@ -570,7 +570,7 @@ correct!
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac Answerer
 """
 import random
 
@@ -668,7 +668,7 @@ from .nonnumsv.o1o0g1o5o0.quest import Questioner as QuestionerO1o0g1o5o0
 Input:  
 
 ```shell
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac Answerer
 ```
 
 Output:  
@@ -724,12 +724,12 @@ answer:None
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac Answerer
 """
 import re
 
 
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     # * `^` - 文の始端
@@ -746,7 +746,7 @@ class NonNumSV:
         start = 0
 
         # 数字列か？
-        m = NonNumSV.__pat_num.match(quiz[start:])
+        m = Answerer.__pat_num.match(quiz[start:])
         if m:
             # 数字列だ
             token = m.group(1)
@@ -755,7 +755,7 @@ class NonNumSV:
 
         while True:
             # 非数字の文字列か？
-            m = NonNumSV.__pat_nonnum.match(quiz[start:])
+            m = Answerer.__pat_nonnum.match(quiz[start:])
             if m is None:
                 break
 
@@ -765,7 +765,7 @@ class NonNumSV:
             start += len(token)
 
             # 数字列か？
-            m = NonNumSV.__pat_num.match(quiz[start:])
+            m = Answerer.__pat_num.match(quiz[start:])
             if m is None:
                 break
 
@@ -814,7 +814,7 @@ class NonNumSV:
 # ...略...
 
 
-from .o1o0g1o6o0 import NonNumSV as NonNumSVO1o0g1o6o0
+from .o1o0g1o6o0 import Answerer as AnswererO1o0g1o6o0
 
 
 # ...略...
@@ -828,7 +828,7 @@ from .o1o0g1o6o0 import NonNumSV as NonNumSVO1o0g1o6o0
 Input:  
 
 ```plaintext
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac Answerer
 ```
 
 Output:  

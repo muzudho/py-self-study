@@ -1,12 +1,12 @@
 """
 Example
 -------
-python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac Answerer
 """
 import re
 
 
-class NonNumSV:
+class Answerer:
     """Non-numeric separated value"""
 
     # * `^` - 文の始端
@@ -23,7 +23,7 @@ class NonNumSV:
         start = 0
 
         # 数字列か？
-        m = NonNumSV.__pat_num.match(quiz[start:])
+        m = Answerer.__pat_num.match(quiz[start:])
         if m:
             # 数字列だ
             token = m.group(1)
@@ -32,7 +32,7 @@ class NonNumSV:
 
         while True:
             # 非数字の文字列か？
-            m = NonNumSV.__pat_nonnum.match(quiz[start:])
+            m = Answerer.__pat_nonnum.match(quiz[start:])
             if m is None:
                 break
 
@@ -42,7 +42,7 @@ class NonNumSV:
             start += len(token)
 
             # 数字列か？
-            m = NonNumSV.__pat_num.match(quiz[start:])
+            m = Answerer.__pat_num.match(quiz[start:])
             if m is None:
                 break
 
