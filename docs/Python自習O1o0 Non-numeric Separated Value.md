@@ -108,7 +108,7 @@ class Questioner:
 """
 Example
 -------
-python -m tests.nonnumsv.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
 """
 import argparse
 from src.dimport import Dimport  # Dynamic class import
@@ -158,12 +158,14 @@ from .nonnumsv.o1o0g1o1o0.quest import Questioner
 ```
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
-「　これでどこかに `Answerer` クラスを作って `to_answer()` メソッドを付けてくれれば テストできるわよ」  
+「　これでどこかに `Answerer` クラスを作って `to_answer` メソッドを付けてくれれば テストできるわよ」  
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　フーン　じゃあ　スケルトンから作るか」  
 
 ## O1o2o0 Skeleton
+
+### O1o2o_1o0 Answerer
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のファイルを作ってくれだぜ」  
@@ -174,9 +176,13 @@ from .nonnumsv.o1o0g1o1o0.quest import Questioner
     │       └── 📂 o1o0g1o2o0    
 👉  │           └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -187,9 +193,11 @@ class NonNumSV:
     """Non-numeric separated value"""
 
     @staticmethod
-    def parse(text):
+    def to_answer(quiz):
         return []
 ```
+
+### O1o2o_2o0 検索パス
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のファイルを作ってくれだぜ」  
@@ -201,9 +209,13 @@ class NonNumSV:
     │       │   └── 📄 __init__.py
 👉  │       └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -218,20 +230,26 @@ from .o1o0g1o2o0 import NonNumSV as NonNumSVO1o0g1o2o0
 # 3. クラスの別名
 ```
 
+### O1o2o_3o0 検索パス
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 前のレッスンで作った、以下の既存ファイルに１行追加してくれだぜ」  
 
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
-    │       ├── 📂 o1o0g1o2o0    
-    │       │   └── 📄 __init__.py
-    │       └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
 👉  │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -252,7 +270,7 @@ from .nonnumsv.o1o0g1o2o0 import NonNumSV
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o2o0 -c NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o2o0 --ac NonNumSV
 ```
 
 Output:  
@@ -266,7 +284,7 @@ Output:
 「　👆 エラーが出るわけだな」  
 
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
-「　`parse` 静的メソッドを実装しろだぜ」
+「　`to_answer` 静的メソッドを実装しろだぜ」
 
 ## O1o3o0 まず、そのまま出そうぜ
 
