@@ -1,5 +1,5 @@
 """
-python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
 """
 
 

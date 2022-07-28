@@ -377,4 +377,75 @@ correct!
     └── 📄 README.md
 ```
 
+```py
+"""
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSVO1o0g1o4o0
+"""
+import argparse
+import random
+from src.dimport import Dimport
+
+# Command line arguments
+# ----------------------
+ap = argparse.ArgumentParser()
+ap.add_argument('-m', help='module')
+ap.add_argument('-c', help='class')
+args = ap.parse_args()
+
+# Dynamic class import
+# --------------------
+NonNumSV = Dimport.load(args.m, args.c)
+
+# Question
+# --------
+characters = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
+# Shuffle
+characters = ''.join(random.sample(characters, len(characters)))
+
+# Answer
+# ------
+vec = NonNumSV.parse(characters)
+
+# Check
+# -----
+if vec is None:
+    print("[Error] vec is none")
+elif len(vec) < 2:
+    print(f"[Error] vec length is small. len:{len(vec)} (< 2)")
+else:
+    is_error = False
+    is_prev_numeric = vec[0].isnumeric()
+    for i in vec.range(1, len(vec)):
+        is_numeric = vec[i].isnumeric()
+        if is_prev_numeric == is_numeric:
+            # Error
+            is_error = True
+            print(f"[Error] elements:{vec[i-1]}, {vec[i]}")
+            break
+
+    if not is_error:
+        print("correct!")
+```
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 以下のコマンドを打鍵しましょう」  
+
+Input:  
+
+```shell
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv -c NonNumSVO1o0g1o4o0
+```
+
+Output:  
+
+```plaintext
+[Error] vec is none
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　そりゃ動かないぜ。問題が変わってるからな」  
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　更新してくれだぜ」  
+
 おわり
