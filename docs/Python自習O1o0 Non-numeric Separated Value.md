@@ -45,7 +45,7 @@ Output:
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　テストを書いて置いたから、これに合うようにコードを書きなさい」  
 
-### quest.py
+### O1o1o1o0 quest.py
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　👇 以下のファイルを新規作成しなさい」  
@@ -86,7 +86,7 @@ class Questioner:
                 print(f"[Error] the response is different. vec:{answer}")
 ```
 
-### test.py
+### O1o1o2o0 test.py
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　👇 以下のファイルを新規作成しなさい」  
@@ -134,7 +134,7 @@ answer = Answerer.to_answer(quiz)
 quest.check(answer, quiz)
 ```
 
-### 検索パス
+### O1o1o3o0 検索パス
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　👇 以下のファイルを新規作成しなさい」  
@@ -288,6 +288,8 @@ Output:
 
 ## O1o3o0 まず、そのまま出そうぜ
 
+### O1o3o1o0 answerer
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のファイルを作ってくれだぜ」  
 
@@ -301,20 +303,31 @@ Output:
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
 ```
 
 ```py
+"""
+Example
+-------
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac NonNumSV
+"""
+
+
 class NonNumSV:
     """Non-numeric separated value"""
 
     @staticmethod
-    def parse(text):
+    def to_answer(text):
         return ["ABC", "123", "DEF", "456", "GHI"]
 ```
 
@@ -323,6 +336,8 @@ class NonNumSV:
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　クラス名の付け方も　狂ってるわよ」  
+
+### O1o3o2o0 検索パス
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
@@ -358,13 +373,15 @@ from .o1o0g1o3o0 import NonNumSV as NonNumSVO1o0g1o3o0
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　モジュールの検索パスを 手動で書くの めんどくさいけど 仕方ない」  
 
+### O1o3o3o0 コマンド
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のコマンドを打鍵してくれだぜ」  
 
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o3o0 --ac NonNumSV
 ```
 
 Output:  
@@ -376,6 +393,8 @@ correct!
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　そりゃ正解よ」  
+
+# ◆◆◆◆◆◆◆◆◆書き直し中◆◆◆◆◆◆◆◆◆
 
 ## O1o4o0 正規表現を使って出そうぜ
 
