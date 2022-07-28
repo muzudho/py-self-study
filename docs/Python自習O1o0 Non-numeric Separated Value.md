@@ -685,9 +685,9 @@ answer:None
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　更新してくれだぜ」  
 
-# ◆◆◆◆◆◆◆◆◆書き直し中◆◆◆◆◆◆◆◆◆
-
 ## O1o6o0 いろんなパターンに対応しようぜ？
+
+### O1o6o1o0 answerer
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のファイルを作ってくれだぜ」  
@@ -722,7 +722,9 @@ answer:None
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSV
+Example
+-------
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac NonNumSV
 """
 import re
 
@@ -739,41 +741,43 @@ class NonNumSV:
     __pat_nonnum = re.compile(r"^(\D+)")
 
     @staticmethod
-    def parse(text):
-        vec = []
+    def to_answer(quiz):
+        answer = []
         start = 0
 
         # 数字列か？
-        m = NonNumSV.__pat_num.match(text[start:])
+        m = NonNumSV.__pat_num.match(quiz[start:])
         if m:
             # 数字列だ
             token = m.group(1)
-            vec.append(token)
+            answer.append(token)
             start += len(token)
 
         while True:
             # 非数字の文字列か？
-            m = NonNumSV.__pat_nonnum.match(text[start:])
+            m = NonNumSV.__pat_nonnum.match(quiz[start:])
             if m is None:
                 break
 
             # 非数字の文字列だ
             token = m.group(1)
-            vec.append(token)
+            answer.append(token)
             start += len(token)
 
             # 数字列か？
-            m = NonNumSV.__pat_num.match(text[start:])
+            m = NonNumSV.__pat_num.match(quiz[start:])
             if m is None:
                 break
 
             # 数字列だ
             token = m.group(1)
-            vec.append(token)
+            answer.append(token)
             start += len(token)
 
-        return vec
+        return answer
 ```
+
+### O1o6o2o0 検索パス
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
@@ -816,20 +820,22 @@ from .o1o0g1o6o0 import NonNumSV as NonNumSVO1o0g1o6o0
 # ...略...
 ```
 
+### O1o6o3o0 コマンド
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のコマンドを打鍵してくれだぜ」  
 
 Input:  
 
 ```plaintext
-python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o6o0 --ac NonNumSV
 ```
 
 Output:  
 
 ```plaintext
-question:Vq&Rrj$g6_%)|A;Fa`oH]OY}QK8.,9hG[vN<3i^1IbS?C/LPXJwDU@xWn\7!E+k'0f(t{>ue5=Tl*:Zmc#Bp-2d"yzM~s4
-answer:['Vq&Rrj$g', '6', '_%)|A;Fa`oH]OY}QK', '8', '.,', '9', 'hG[vN<', '3', 'i^', '1', 'IbS?C/LPXJwDU@xWn\\', '7', "!E+k'", '0', 'f(t{>ue', '5', '=Tl*:Zmc#Bp-', '2', 'd"yzM~s', '4']
+quiz:2}`Z.XejT?v;B0\>@J:PqA4b'[,|7smNr%)(zLn8iYR6#hCgdKta~w{kIDyFxp]&G_u1^Q!H<M=9-fol*$S3VW5+UE"c/O
+answer:['2', '}`Z.XejT?v;B', '0', '\\>@J:PqA', '4', "b'[,|", '7', 'smNr%)(zLn', '8', 'iYR', '6', '#hCgdKta~w{kIDyFxp]&G_u', '1', '^Q!H<M=', '9', '-fol*$S', '3', 'VW', '5', '+UE"c/O']
 correct!
 ```
 
