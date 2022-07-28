@@ -451,14 +451,26 @@ elif len(vec) < 2:
     print(f"[Error] vec length is small. len:{len(vec)} (< 2)")
 else:
     is_error = False
-    is_prev_numeric = vec[0].isnumeric()
-    for i in range(1, len(vec)):
-        is_numeric = vec[i].isnumeric()
-        if is_prev_numeric == is_numeric:
-            # Error
-            is_error = True
-            print(f"[Error] elements:{vec[i-1]}, {vec[i]}")
-            break
+
+    # もとの文字列と一致するかチェック
+    text2 = ''.join(vec)
+    if text2 != characters:
+        is_error = True
+        print("[Error] the string is different")
+        print(f"> actual  :{text2}")
+        print(f"> expected:{characters}")
+
+    if not is_error:
+        # 数字，非数字が 交互かチェック
+        is_prev_numeric = vec[0].isnumeric()
+        for i in range(1, len(vec)):
+            is_numeric = vec[i].isnumeric()
+            if is_prev_numeric == is_numeric:
+                # Error
+                is_error = True
+                break
+
+            is_prev_numeric = is_numeric
 
     if not is_error:
         print("correct!")
@@ -524,23 +536,49 @@ import re
 class NonNumSVO1o0g1o6o0:
     """Non-numeric separated value"""
 
-    # * `^ $` - 文の始端から終端まで
+    # * `^` - 文の始端
     # * `\d` - 半角数字
+    # * `\d+` - 半角数字（1つ以上）
+    # * `( )` - キャプチャーグループ
+    __pat_num = re.compile(r"^(\d+)")
     # * `\D` - 半角数字以外
-    # * `(?: )` - ただの括弧
-    # * `( )?` - グループ，ただし省略可
-    # * `( )*` - グループ，0個以上にマッチ
-    __pat = re.compile(r"^(?:(\D+)?(\d+)?)*$")
+    __pat_nonnum = re.compile(r"^(\D+)")
 
     @staticmethod
     def parse(text):
-        m = NonNumSVO1o0g1o6o0.__pat.match(text)
+        vec = []
+        start = 0
 
+        # 数字列か？
+        m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
         if m:
-            # タプルをリストに変換
-            return list(m.groups())
+            # 数字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
 
-        return None
+        while True:
+            # 非数字の文字列か？
+            m = NonNumSVO1o0g1o6o0.__pat_nonnum.match(text[start:])
+            if m is None:
+                break
+
+            # 非数字の文字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
+
+            # 数字列か？
+            m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+            if m is None:
+                break
+
+            # 数字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
+
+        return vec
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
@@ -586,11 +624,12 @@ python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO
 Output:  
 
 ```plaintext
-question:.b>1k"HOFA^a+,0deofG%@_{J<2`8Q}XtN=g?Vsn!p63E9Shqx[$Kc#i4;RUjL~CY5M7W(Py:rB/v]-|&)*Tl'\IDuZzwm
-answer:["W(Py:rB/v]-|&)*Tl'\\IDuZzwm", '7']
+question:Vq&Rrj$g6_%)|A;Fa`oH]OY}QK8.,9hG[vN<3i^1IbS?C/LPXJwDU@xWn\7!E+k'0f(t{>ue5=Tl*:Zmc#Bp-2d"yzM~s4
+answer:['Vq&Rrj$g', '6', '_%)|A;Fa`oH]OY}QK', '8', '.,', '9', 'hG[vN<', '3', 'i^', '1', 'IbS?C/LPXJwDU@xWn\\', '7', "!E+k'", '0', 'f(t{>ue', '5', '=Tl*:Zmc#Bp-', '2', 'd"yzM~s', '4']
+correct!
 ```
 
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
-「　文字数が足りてないぜ」  
+「　答えは合ってるみたいだが、本当に合ってんのかな？」  
 
 おわり

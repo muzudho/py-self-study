@@ -7,20 +7,46 @@ import re
 class NonNumSVO1o0g1o6o0:
     """Non-numeric separated value"""
 
-    # * `^ $` - 文の始端から終端まで
+    # * `^` - 文の始端
     # * `\d` - 半角数字
+    # * `\d+` - 半角数字（1つ以上）
+    # * `( )` - キャプチャーグループ
+    __pat_num = re.compile(r"^(\d+)")
     # * `\D` - 半角数字以外
-    # * `(?: )` - ただの括弧
-    # * `( )?` - グループ，ただし省略可
-    # * `( )*` - グループ，0個以上にマッチ
-    __pat = re.compile(r"^(?:(\D+)?(\d+)?)*$")
+    __pat_nonnum = re.compile(r"^(\D+)")
 
     @staticmethod
     def parse(text):
-        m = NonNumSVO1o0g1o6o0.__pat.match(text)
+        vec = []
+        start = 0
 
+        # 数字列か？
+        m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
         if m:
-            # タプルをリストに変換
-            return list(m.groups())
+            # 数字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
 
-        return None
+        while True:
+            # 非数字の文字列か？
+            m = NonNumSVO1o0g1o6o0.__pat_nonnum.match(text[start:])
+            if m is None:
+                break
+
+            # 非数字の文字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
+
+            # 数字列か？
+            m = NonNumSVO1o0g1o6o0.__pat_num.match(text[start:])
+            if m is None:
+                break
+
+            # 数字列だ
+            token = m.group(1)
+            vec.append(token)
+            start += len(token)
+
+        return vec

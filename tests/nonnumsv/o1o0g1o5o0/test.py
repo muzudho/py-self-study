@@ -36,14 +36,26 @@ elif len(vec) < 2:
     print(f"[Error] vec length is small. len:{len(vec)} (< 2)")
 else:
     is_error = False
-    is_prev_numeric = vec[0].isnumeric()
-    for i in range(1, len(vec)):
-        is_numeric = vec[i].isnumeric()
-        if is_prev_numeric == is_numeric:
-            # Error
-            is_error = True
-            print(f"[Error] elements:{vec[i-1]}, {vec[i]}")
-            break
+
+    # もとの文字列と一致するかチェック
+    text2 = ''.join(vec)
+    if text2 != characters:
+        is_error = True
+        print("[Error] the string is different")
+        print(f"> actual  :{text2}")
+        print(f"> expected:{characters}")
+
+    if not is_error:
+        # 数字，非数字が 交互かチェック
+        is_prev_numeric = vec[0].isnumeric()
+        for i in range(1, len(vec)):
+            is_numeric = vec[i].isnumeric()
+            if is_prev_numeric == is_numeric:
+                # Error
+                is_error = True
+                break
+
+            is_prev_numeric = is_numeric
 
     if not is_error:
         print("correct!")
