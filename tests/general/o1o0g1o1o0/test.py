@@ -18,10 +18,12 @@ args = ap.parse_args()
 Questioner = Dimport.load(args.qm, args.qc)
 quest = Questioner()
 quiz = quest.make_quiz()
+print(f"quiz:{quiz}")
 
 # Do
 Answerer = Dimport.load(args.am, args.ac)
 answer = Answerer.to_answer(quiz)
+print(f"answer:{answer}")
 
 # Check
 quest.check(answer, quiz)
