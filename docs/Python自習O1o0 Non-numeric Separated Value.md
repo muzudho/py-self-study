@@ -100,7 +100,8 @@ else:
 ```plaintext
     ├── 📂 src
     │   └── 📂 nonnumsv
-👉  │       └── 📄 __init__.py
+    │       └── 📂 o1o0g1o2o0    
+👉  │           └── 📄 __init__.py
     ├── 📂 tests
     │   └── 📂 nonnumsv
     │       └── 📂 o1o0g1o1o0
@@ -120,12 +121,36 @@ class NonNumSVO1o0g1o2o0:
 ```
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
-「　👇 以下の既存ファイルに１行追加してくれだぜ」  
+「　👇 以下のファイルを作ってくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   └── 📂 nonnumsv
+    │       ├── 📂 o1o0g1o2o0    
+    │       │   └── 📄 __init__.py
+👉  │       └── 📄 __init__.py
+    ├── 📂 tests
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+from .o1o0g1o2o0 import NonNumSVO1o0g1o2o0
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 前のレッスンで作った、以下の既存ファイルに１行追加してくれだぜ」  
 
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
-    │   │   └── 📄 __init__.py
+    │       ├── 📂 o1o0g1o2o0    
+    │       │   └── 📄 __init__.py
+    │       └── 📄 __init__.py
 👉  │   └── 📄 __init__.py
     ├── 📂 tests
     │   └── 📂 nonnumsv
@@ -140,7 +165,7 @@ class NonNumSVO1o0g1o2o0:
 # ...略...
 
 
-from .nonnumsv import NonNumSVO1o0g1o2o0
+from .nonnumsv.o1o0g1o2o0 import NonNumSVO1o0g1o2o0
 ```
 
 ### O1o2o1o0 コマンド実行
@@ -151,7 +176,7 @@ from .nonnumsv import NonNumSVO1o0g1o2o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o2o0 -c NonNumSVO1o0g1o2o0
 ```
 
 Output:  
@@ -175,6 +200,8 @@ Output:
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o3o0
 👉  │   │   │   └── 📄 __init__.py
     │   │   └── 📄 __init__.py
@@ -209,6 +236,8 @@ class NonNumSVO1o0g1o3o0:
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o3o0
     │   │   │   └── 📄 __init__.py
 👉  │   │   └── 📄 __init__.py
@@ -263,6 +292,8 @@ correct!
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o3o0
     │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o4o0
@@ -305,6 +336,8 @@ class NonNumSVO1o0g1o4o0:
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o3o0
     │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o4o0
@@ -360,6 +393,8 @@ correct!
 ```plaintext
     ├── 📂 src
     │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o3o0
     │   │   │   └── 📄 __init__.py
     │   │   ├── 📂 o1o0g1o4o0
