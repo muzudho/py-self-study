@@ -21,10 +21,12 @@ NonNumSV = Dimport.load(args.m, args.c)
 characters = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
 # Shuffle
 characters = ''.join(random.sample(characters, len(characters)))
+print(f"question:{characters}")
 
 # Answer
 # ------
 vec = NonNumSV.parse(characters)
+print(f"answer:{vec}")
 
 # Check
 # -----
@@ -35,7 +37,7 @@ elif len(vec) < 2:
 else:
     is_error = False
     is_prev_numeric = vec[0].isnumeric()
-    for i in vec.range(1, len(vec)):
+    for i in range(1, len(vec)):
         is_numeric = vec[i].isnumeric()
         if is_prev_numeric == is_numeric:
             # Error

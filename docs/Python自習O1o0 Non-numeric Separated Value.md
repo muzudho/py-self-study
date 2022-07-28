@@ -436,10 +436,12 @@ NonNumSV = Dimport.load(args.m, args.c)
 characters = """!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~"""
 # Shuffle
 characters = ''.join(random.sample(characters, len(characters)))
+print(f"question:{characters}")
 
 # Answer
 # ------
 vec = NonNumSV.parse(characters)
+print(f"answer:{vec}")
 
 # Check
 # -----
@@ -450,7 +452,7 @@ elif len(vec) < 2:
 else:
     is_error = False
     is_prev_numeric = vec[0].isnumeric()
-    for i in vec.range(1, len(vec)):
+    for i in range(1, len(vec)):
         is_numeric = vec[i].isnumeric()
         if is_prev_numeric == is_numeric:
             # Error
@@ -482,5 +484,113 @@ Output:
 
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　更新してくれだぜ」  
+
+## O1o6o0 いろんなパターンに対応しようぜ？
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のファイルを作ってくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o6o0
+👉  │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   └── 📂 nonnumsv
+    │       ├── 📂 o1o0g1o1o0
+    │       │   └── 📄 test.py
+    │       └── 📂 o1o0g1o5o0
+    │           └── 📄 test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+"""
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO1o0g1o6o0
+"""
+import re
+
+
+class NonNumSVO1o0g1o6o0:
+    """Non-numeric separated value"""
+
+    # * `^ $` - 文の始端から終端まで
+    # * `\d` - 半角数字
+    # * `\D` - 半角数字以外
+    # * `(?: )` - ただの括弧
+    # * `( )?` - グループ，ただし省略可
+    # * `( )*` - グループ，0個以上にマッチ
+    __pat = re.compile(r"^(?:(\D+)?(\d+)?)*$")
+
+    @staticmethod
+    def parse(text):
+        m = NonNumSVO1o0g1o6o0.__pat.match(text)
+
+        if m:
+            # タプルをリストに変換
+            return list(m.groups())
+
+        return None
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o6o0
+    │   │   │   └── 📄 __init__.py
+👉  │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   └── 📂 nonnumsv
+    │       ├── 📂 o1o0g1o1o0
+    │       │   └── 📄 test.py
+    │       └── 📂 o1o0g1o5o0
+    │           └── 📄 test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+from .o1o0g1o6o0 import NonNumSVO1o0g1o6o0
+```
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のコマンドを打鍵してくれだぜ」  
+
+Input:  
+
+```plaintext
+python -m tests.nonnumsv.o1o0g1o5o0.test -m src.nonnumsv.o1o0g1o6o0 -c NonNumSVO1o0g1o6o0
+```
+
+Output:  
+
+```plaintext
+question:.b>1k"HOFA^a+,0deofG%@_{J<2`8Q}XtN=g?Vsn!p63E9Shqx[$Kc#i4;RUjL~CY5M7W(Py:rB/v]-|&)*Tl'\IDuZzwm
+answer:["W(Py:rB/v]-|&)*Tl'\\IDuZzwm", '7']
+```
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　文字数が足りてないぜ」  
 
 おわり
