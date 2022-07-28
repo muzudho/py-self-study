@@ -48,7 +48,7 @@ Output:
 ```plaintext
     ├── 📂 tests
     │   └── 📂 nonnumsv
-    │       └── 📂 o1o1o0
+    │       └── 📂 o1o0g1o1o0
 👉  │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
@@ -57,7 +57,7 @@ Output:
 
 ```py
 """
-python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 """
 import argparse
 from src.dimport import Dimport
@@ -102,7 +102,9 @@ else:
     │   └── 📂 nonnumsv
 👉  │       └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -126,7 +128,9 @@ class NonNumSVO1o0g1o2o0:
     │   │   └── 📄 __init__.py
 👉  │   └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -147,7 +151,7 @@ from .nonnumsv import NonNumSVO1o0g1o2o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 ```
 
 Output:  
@@ -176,7 +180,9 @@ Output:
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -208,7 +214,9 @@ class NonNumSVO1o0g1o3o0:
 👉  │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -230,7 +238,7 @@ from .o1o0g1o3o0 import NonNumSVO1o0g1o3o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
 ```
 
 Output:  
@@ -262,7 +270,9 @@ correct!
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -270,7 +280,7 @@ correct!
 
 ```py
 """
-python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
 """
 import re
 
@@ -302,7 +312,9 @@ class NonNumSVO1o0g1o4o0:
 👉  │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o0g1o1o0
+    │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -324,7 +336,7 @@ from .o1o0g1o4o0 import NonNumSVO1o0g1o4o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
 ```
 
 Output:  
@@ -340,6 +352,29 @@ correct!
 ## O1o5o0 Questioner 出題を増やしましょう
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
-「　👇 パターンの数を増やすわよ」  
+「　パターンの数を増やすわよ」  
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 以下のファイルを作りなさい」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   └── 📂 nonnumsv
+    │       ├── 📂 o1o0g1o1o0
+    │       │   └── 📄 test.py
+    │       └── 📂 o1o0g1o5o0
+👉  │           └── 📄 test.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
 
 おわり
