@@ -47,7 +47,9 @@ Output:
 
 ```plaintext
     ├── 📂 tests
-👉  │    └── 📄 nonnumsv_test.py
+    │   └── 📂 nonnumsv
+    │       └── 📂 o1o1o0
+👉  │           └── 📄 test.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -55,7 +57,7 @@ Output:
 
 ```py
 """
-python -m tests.nonnumsv_test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 """
 import argparse
 from src.dimport import Dimport
@@ -145,7 +147,7 @@ from .nonnumsv import NonNumSVO1o0g1o2o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv_test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 ```
 
 Output:  
@@ -228,7 +230,7 @@ from .o1o0g1o3o0 import NonNumSVO1o0g1o3o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o3o0 -c NonNumSVO1o0g1o3o0
 ```
 
 Output:  
@@ -268,7 +270,7 @@ correct!
 
 ```py
 """
-python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
 """
 import re
 
@@ -322,7 +324,7 @@ from .o1o0g1o4o0 import NonNumSVO1o0g1o4o0
 Input:  
 
 ```shell
-python -m tests.nonnumsv_test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSVO1o0g1o4o0
 ```
 
 Output:  
@@ -334,5 +336,10 @@ correct!
 
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　でけたな」  
+
+## O1o5o0 Questioner 出題を増やしましょう
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　👇 パターンの数を増やすわよ」  
 
 おわり

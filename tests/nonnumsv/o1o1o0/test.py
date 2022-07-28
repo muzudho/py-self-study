@@ -1,5 +1,5 @@
 """
-python -m tests.nonnumsv_test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
+python -m tests.nonnumsv.o1o1o0.test -m src.nonnumsv -c NonNumSVO1o0g1o2o0
 """
 import argparse
 from src.dimport import Dimport
