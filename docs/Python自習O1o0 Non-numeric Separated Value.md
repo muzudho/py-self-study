@@ -352,9 +352,13 @@ class NonNumSV:
 👉  │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -394,13 +398,13 @@ correct!
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　そりゃ正解よ」  
 
-# ◆◆◆◆◆◆◆◆◆書き直し中◆◆◆◆◆◆◆◆◆
-
 ## O1o4o0 正規表現を使って出そうぜ
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　今までは　練習の枠組みを用意したわけだぜ。  
 ここからが本番だぜ」  
+
+### O1o4o1o0 answerer
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のファイルを作ってくれだぜ」  
@@ -417,9 +421,13 @@ correct!
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -427,7 +435,9 @@ correct!
 
 ```py
 """
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
+Example
+-------
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
 """
 import re
 
@@ -435,16 +445,25 @@ import re
 class NonNumSV:
     """Non-numeric separated value"""
 
+    # * `^` - 行頭
+    # * `( )` - キャプチャーグループ
+    # * `[A-Z]` - 大文字のAからZ
+    # * `[ ]+` - 1回以上
+    # * `[0-9]` - 半角数字の0から9
+    # * `$` - 行末
     __pat = re.compile(r"^([A-Z]+)([0-9]+)([A-Z]+)([0-9]+)([A-Z]+)$")
 
     @staticmethod
-    def parse(text):
-        m = NonNumSV.__pat.match(text)
+    def to_answer(quiz):
+        m = NonNumSV.__pat.match(quiz)
         if m:
+            # `m.group( )` - 引数の数はパターンの括弧の位置に対応
             return [m.group(1), m.group(2), m.group(3), m.group(4), m.group(5)]
 
         return None
 ```
+
+### O1o4o2o0 検索パス
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
@@ -461,9 +480,13 @@ class NonNumSV:
 👉  │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       └── 📂 o1o0g1o1o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -479,13 +502,15 @@ from .o1o0g1o4o0 import NonNumSV as NonNumSVO1o0g1o4o0
 # ...略...
 ```
 
+### O1o4o3o0 コマンド
+
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
 「　👇 以下のコマンドを打鍵してくれだぜ」  
 
 Input:  
 
 ```shell
-python -m tests.nonnumsv.o1o0g1o1o0.test -m src.nonnumsv.o1o0g1o4o0 -c NonNumSV
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o4o0 --ac NonNumSV
 ```
 
 Output:  
@@ -498,10 +523,14 @@ correct!
 ![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
 「　でけたな」  
 
+# ◆◆◆◆◆◆◆◆◆書き直し中◆◆◆◆◆◆◆◆◆
+
 ## O1o5o0 問題のパターンを増やしましょう
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　パターンの数を増やすわよ」  
+
+### questioner
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　👇 以下のファイルを作りなさい」  
@@ -518,11 +547,15 @@ correct!
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       ├── 📂 o1o0g1o1o0
-    │       │   └── 📄 test.py
-    │       └── 📂 o1o0g1o5o0
-👉  │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+👉  │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -649,11 +682,15 @@ answer:None
     │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       ├── 📂 o1o0g1o1o0
-    │       │   └── 📄 test.py
-    │       └── 📂 o1o0g1o5o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
@@ -731,11 +768,15 @@ class NonNumSV:
 👉  │   │   └── 📄 __init__.py
     │   └── 📄 __init__.py
     ├── 📂 tests
-    │   └── 📂 nonnumsv
-    │       ├── 📂 o1o0g1o1o0
-    │       │   └── 📄 test.py
-    │       └── 📂 o1o0g1o5o0
-    │           └── 📄 test.py
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
     ├── 📄 .gitignore
     ├── 📄 LICENSE
     └── 📄 README.md
