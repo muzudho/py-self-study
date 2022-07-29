@@ -63,27 +63,36 @@ Output:
 ```py
 class Questioner:
     """出題者"""
-    
+
     def make_quiz(self):
         """答えのある問い作成"""
         return "ABC123DEF456GHI"
 
     def check(self, answer, quiz):
-        """答え合わせ"""
+        """答え合わせ
+        Returns
+        -------
+        str
+            Error message or None
+        """
+        err_list = []
 
         if answer is None:
-            print("[Error] vec is none")
+            err_list.append("[Error] vec is none")
         else:
             vec_size = len(answer)
-            if vec_size == 5:
-                print("size is ok")
-            else:
-                print(f"[Error] the size is different. size:{vec_size}")
+            if vec_size != 5:
+                err_list.append(
+                    f"[Error] the size is different. size:{vec_size}")
 
-            if answer == ["ABC", "123", "DEF", "456", "GHI"]:
-                print("correct!")
-            else:
-                print(f"[Error] the response is different. vec:{answer}")
+            if answer != ["ABC", "123", "DEF", "456", "GHI"]:
+                err_list.append(
+                    f"[Error] the response is different. vec:{answer}")
+
+        if 0 < len(err_list):
+            return "\n".join(err_list)
+        else:
+            return None
 ```
 
 ### O1o1o2o0 test.py
@@ -133,7 +142,11 @@ answer = Answerer.to_answer(quiz)
 print(f"answer:{answer}")
 
 # Check
-quest.check(answer, quiz)
+err = quest.check(answer, quiz)
+if err is None:
+    print("correct!")
+else:
+    print(err)
 ```
 
 ### O1o1o3o0 検索パス
@@ -283,6 +296,8 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --q
 Output:  
 
 ```shell
+quiz:ABC123DEF456GHI
+answer:[]
 [Error] the size is different. size:0
 [Error] the response is different. vec:[]
 ```
@@ -398,7 +413,8 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --q
 Output:  
 
 ```shell
-size is ok
+quiz:ABC123DEF456GHI
+answer:['ABC', '123', 'DEF', '456', 'GHI']
 correct!
 ```
 
@@ -523,7 +539,8 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --q
 Output:  
 
 ```shell
-size is ok
+quiz:ABC123DEF456GHI
+answer:['ABC', '123', 'DEF', '456', 'GHI']
 correct!
 ```
 
@@ -586,12 +603,19 @@ class Questioner:
         return quiz
 
     def check(self, answer, quiz):
-        """答え合わせ"""
+        """答え合わせ
+        Returns
+        -------
+        str
+            Error message or None
+        """
+        err_list = []
 
         if answer is None:
-            print("[Error] answer is none")
+            err_list.append("[Error] answer is none")
         elif len(answer) < 2:
-            print(f"[Error] answer length is small. len:{len(answer)} (< 2)")
+            err_list.append(
+                f"[Error] answer length is small. len:{len(answer)} (< 2)")
         else:
             is_error = False
 
@@ -599,9 +623,9 @@ class Questioner:
             text2 = ''.join(answer)
             if text2 != quiz:
                 is_error = True
-                print("[Error] the string is different")
-                print(f"> actual  :{text2}")
-                print(f"> expected:{quiz}")
+                err_list.append("[Error] the string is different")
+                err_list.append(f"> actual  :{text2}")
+                err_list.append(f"> expected:{quiz}")
 
             if not is_error:
                 # 数字，非数字が 交互かチェック
@@ -615,8 +639,10 @@ class Questioner:
 
                     is_prev_numeric = is_numeric
 
-            if not is_error:
-                print("correct!")
+        if 0 < len(err_list):
+            return "\n".join(err_list)
+        else:
+            return None
 ```
 
 ### O1o5o2o0 検索パス
@@ -674,7 +700,7 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --q
 Output:  
 
 ```plaintext
-quiz:)VA{I6wl"`|h\m4gq($T[i-75+M}o%kRS#n]CxaD>?92zB^pGW;cJXs&,Yt<ey_1L.UK'~dH!3Pr=v8b*:fZE/@FjQOuN0
+quiz:8pyi0tVKZ"n|/hec\+>=BjIdS<),Pvb%3'_ax-sA?;N2#FH76&T]5[MYk(RJE`oluLO:z{DXg}U4m1rfQw@.*$C!WGq^9~
 answer:None
 [Error] answer is none
 ```
@@ -834,8 +860,8 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --q
 Output:  
 
 ```plaintext
-quiz:2}`Z.XejT?v;B0\>@J:PqA4b'[,|7smNr%)(zLn8iYR6#hCgdKta~w{kIDyFxp]&G_u1^Q!H<M=9-fol*$S3VW5+UE"c/O
-answer:['2', '}`Z.XejT?v;B', '0', '\\>@J:PqA', '4', "b'[,|", '7', 'smNr%)(zLn', '8', 'iYR', '6', '#hCgdKta~w{kIDyFxp]&G_u', '1', '^Q!H<M=', '9', '-fol*$S', '3', 'VW', '5', '+UE"c/O']
+quiz:n*;7'Ip{DKr\A6c&SuW"T=U^)3#PxwN0h$]?La!zsV/1[YjJ49tZ`dRO(_Cm,glef5.%2bkXGQqy|~-Fi8v:BM}>oE<+H@
+answer:['n*;', '7', "'Ip{DKr\\A", '6', 'c&SuW"T=U^)', '3', '#PxwN', '0', 'h$]?La!zsV/', '1', '[YjJ', '49', 'tZ`dRO(_Cm,glef', '5', '.%', '2', 'bkXGQqy|~-Fi', '8', 'v:BM}>oE<+H@']
 correct!
 ```
 
@@ -995,11 +1021,72 @@ python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --q
 Output:  
 
 ```plaintext
-> actual  :75yO?;tm@/W&zj)Rq<u,LHIx^+>T~AV[vd:0$}"B8J=DU\*(ZlgFo1bp3efEk`iK9QN-6P{C]h.4%sar!2_w'#MYGX|Scn
-> expected:m@/W&zj)Rq<u,5yO?;t7LHIx^+>T~AV[vd:0$}"B8J=DU\*(ZlgFo1bp3efEk`iK9QN-6P{C]h.4%sar!2_w'#MYGX|Scn
+quiz:eV0LI6Ep-AT=[@f,\}">d#:xn/|$t47WORZ.%rN&Kq3;1lQm]9s*5J`bCuG~!oDz8kgF<(+j_ivyc?w^hMP2HUBY'XS{a)
+answer:['eV', '0', 'Ep-AT=[@f,\\}">d#:xn/|$t', '6', 'LI', '47', 'WORZ.%rN&Kq', '3', ';', '1', 'lQm]', '9', 's*', '5', 'J`bCuG~!oDz', '8', 
+'kgF<(+j_ivyc?w^hMP', '2', "HUBY'XS{a)"]
+[Error] the string is different
+> actual  :eV0Ep-AT=[@f,\}">d#:xn/|$t6LI47WORZ.%rN&Kq3;1lQm]9s*5J`bCuG~!oDz8kgF<(+j_ivyc?w^hMP2HUBY'XS{a)
+> expected:eV0LI6Ep-AT=[@f,\}">d#:xn/|$t47WORZ.%rN&Kq3;1lQm]9s*5J`bCuG~!oDz8kgF<(+j_ivyc?w^hMP2HUBY'XS{a)
 ```
 
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　スワップしたのだから、エラーになって当然よ」  
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　いつも正解って言ったり、いつも間違いというようなプログラムでないことは　分かったが……」  
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　そんなプログラム、きふわらべ　みたいだな」  
+
+## O1o8o0 連続テストしようぜ？
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　テストしたいプログラムを１００回、　わざと間違えるプログラムを１００回、  
+ランダムな順序で実行して、
+テストしたいプログラムの答えが正解の回数、わざと間違えるプログラムの答えが間違いの回数を加算して、
+実行回数当たりの　ちゃんと動いた回数の割合を出してくれだぜ」  
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　じゃあ 100回ずつと言わず、 計2000回やって、小数点１桁の精度の百分率を出すかだぜ」  
+
+### O1o8o1o0 answerer
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のファイルを新規作成してくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o6o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o7o0
+    │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   ├── 📂 general
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 test.py
+    │   │   └── 📂 o1o0g1o8o0
+👉  │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+```
 
 おわり

@@ -26,4 +26,8 @@ answer = Answerer.to_answer(quiz)
 print(f"answer:{answer}")
 
 # Check
-quest.check(answer, quiz)
+err = quest.check(answer, quiz)
+if err is None:
+    print("correct!")
+else:
+    print(err)

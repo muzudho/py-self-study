@@ -17,12 +17,19 @@ class Questioner:
         return quiz
 
     def check(self, answer, quiz):
-        """答え合わせ"""
+        """答え合わせ
+        Returns
+        -------
+        str
+            Error message or None
+        """
+        err_list = []
 
         if answer is None:
-            print("[Error] answer is none")
+            err_list.append("[Error] answer is none")
         elif len(answer) < 2:
-            print(f"[Error] answer length is small. len:{len(answer)} (< 2)")
+            err_list.append(
+                f"[Error] answer length is small. len:{len(answer)} (< 2)")
         else:
             is_error = False
 
@@ -30,9 +37,9 @@ class Questioner:
             text2 = ''.join(answer)
             if text2 != quiz:
                 is_error = True
-                print("[Error] the string is different")
-                print(f"> actual  :{text2}")
-                print(f"> expected:{quiz}")
+                err_list.append("[Error] the string is different")
+                err_list.append(f"> actual  :{text2}")
+                err_list.append(f"> expected:{quiz}")
 
             if not is_error:
                 # 数字，非数字が 交互かチェック
@@ -46,5 +53,7 @@ class Questioner:
 
                     is_prev_numeric = is_numeric
 
-            if not is_error:
-                print("correct!")
+        if 0 < len(err_list):
+            return "\n".join(err_list)
+        else:
+            return None
