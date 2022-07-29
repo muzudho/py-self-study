@@ -3,6 +3,21 @@
 📖 [Python自習O_9o0 目次だぜ（＾～＾）](https://crieit.net/posts/Python-62de8a581dbea) - 目次  
 📖 [Python自習O0o0 クラスを動的に読み込もうぜ（＾～＾）](https://crieit.net/posts/Python-62de830e6dd8e) - Dimport クラス  
 
+# O_8o0 前回の記事までのディレクトリー構成
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 dimport
+    │   │   └── 📄 __init__.py
+    │   ├── 📂 hello
+    │   │  └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    └── 📂 tests
+        ├── 📄 dimport_test.py
+        ├── 📄 dimport_test2.py
+        └── 📄 hello_test.py
+```
+
 # O0o0 今回の記事
 
 ![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
@@ -78,7 +93,7 @@ class Questioner:
         err_list = []
 
         if answer is None:
-            err_list.append("[Error] vec is none")
+            err_list.append("[Error] answer is none")
         else:
             vec_size = len(answer)
             if vec_size != 5:
@@ -1087,6 +1102,159 @@ answer:['eV', '0', 'Ep-AT=[@f,\\}">d#:xn/|$t', '6', 'LI', '47', 'WORZ.%rN&Kq', '
 ```
 
 ```py
+"""
+Example
+-------
+python -m tests.general.o1o0g1o8o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --oam src.nonnumsv.o1o0g1o6o0 --oac Answerer --xam src.nonnumsv.o1o0g1o7o0 --xac Answerer --o 1000 --x 1000
+"""
+import argparse
+import random
+import math
+from src.dimport import Dimport  # Dynamic class import
+
+# Command line arguments
+ap = argparse.ArgumentParser()
+ap.add_argument('--qm', help='questioner module')
+ap.add_argument('--qc', help='questioner class')
+ap.add_argument('--oam', help='correct answerer module')
+ap.add_argument('--oac', help='correct answerer class')
+ap.add_argument('--xam', help='incorrect answerer module')
+ap.add_argument('--xac', help='incorrect answerer class')
+ap.add_argument('--o', help='correct total count')
+ap.add_argument('--x', help='incorrect total count')
+args = ap.parse_args()
+
+# Plan
+# ----
+Questioner = Dimport.load(args.qm, args.qc)
+quest = Questioner()
+
+CorrectAnswerer = Dimport.load(args.oam, args.oac)
+IncorrectAnswerer = Dimport.load(args.xam, args.xac)
+correct_total = int(args.o)
+incorrect_total = int(args.x)
+
+
+def check_correct(total):
+    """正答数を数える"""
+    correct_count = 0
+    for i in range(0, total):
+        quiz = quest.make_quiz()
+        answer = CorrectAnswerer.to_answer(quiz)
+        err = quest.check(answer, quiz)
+        if err is None:
+            correct_count += 1
+
+    return correct_count
+
+
+def check_incorrect(total):
+    """誤答数を数える"""
+    incorrect_count = 0
+    for i in range(0, total):
+        quiz = quest.make_quiz()
+        answer = IncorrectAnswerer.to_answer(quiz)
+        err = quest.check(answer, quiz)
+        if not err is None:
+            incorrect_count += 1
+
+    return incorrect_count
+
+
+# Do
+# --
+correct_rest = correct_total
+incorrect_rest = incorrect_total
+correct_count = 0
+incorrect_count = 0
+
+# Example
+if 0 < correct_rest:
+    quiz = quest.make_quiz()
+    print(f"(1) quiz:{quiz}")
+    answer = CorrectAnswerer.to_answer(quiz)
+    print(f"    answer:{answer}")
+    err = quest.check(answer, quiz)
+    if err is None:
+        correct_count += 1
+    else:
+        print(err)
+    correct_rest -= 1
+
+# Example
+if 0 < incorrect_rest:
+    quiz = quest.make_quiz()
+    print(f"(2) quiz:{quiz}")
+    answer = IncorrectAnswerer.to_answer(quiz)
+    print(f"    answer:{answer}")
+    err = quest.check(answer, quiz)
+    if not err is None:
+        print(err)
+        incorrect_count += 1
+    incorrect_rest -= 1
+
+print("...")
+
+while 0 < correct_rest or 0 < incorrect_rest:
+    # 正答テスト
+    if 0 < correct_rest:
+        if incorrect_rest == 0:
+            times = correct_rest
+        else:
+            # 正答テストの残り件数の方が多かったら多めに行う
+            scale = math.ceil(correct_rest / incorrect_rest)
+            # ランダムに少し上乗せしてリズムを狂わす
+            scale += random.randint(0, 3)
+            times = min(scale, correct_rest)
+        correct_count += check_correct(times)
+        correct_rest -= times
+
+    # 誤答テスト
+    if 0 < incorrect_rest:
+        if correct_rest == 0:
+            times = incorrect_rest
+        else:
+            # 誤答テストの残り件数の方が多かったら多めに行う
+            scale = math.ceil(incorrect_rest / correct_rest)
+            # ランダムに少し上乗せしてリズムを狂わす
+            scale += random.randint(0, 3)
+            times = min(scale, incorrect_rest)
+        incorrect_count += check_incorrect(times)
+        incorrect_rest -= times
+
+total_count = correct_total + incorrect_total
+quality = (correct_count + incorrect_count) * 100 / total_count
+
+
+# Check
+# -----
+print(f"""quality:{quality:.1f}% total:{total_count}""")
 ```
+
+### O1o8o2o0 コマンド
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のコマンドを打鍵してくれだぜ」  
+
+Input:  
+
+```shell
+python -m tests.general.o1o0g1o8o0.test --qm tests.nonnumsv.o1o0g1o1o0.quest --qc Questioner --oam src.nonnumsv.o1o0g1o6o0 --oac Answerer --xam src.nonnumsv.o1o0g1o7o0 --xac Answerer --o 1000 --x 1000
+```
+
+Output:  
+
+```shell
+(1) quiz:ABC123DEF456GHI
+    answer:['ABC', '123', 'DEF', '456', 'GHI']
+(2) quiz:ABC123DEF456GHI
+    answer:['DEF', '123', 'ABC', '456', 'GHI']
+[Error] the response is different. vec:['DEF', '123', 'ABC', '456', 'GHI']
+...
+quality:100.0% total:2000
+```
+
+![202101__character__28--kifuwarabe-futsu.png](https://crieit.now.sh/upload_images/e846bc7782a0e037a1665e6b3d51b02462de6041600db.png)  
+「　確率的には ちゃんと動いてそうだな」  
 
 おわり

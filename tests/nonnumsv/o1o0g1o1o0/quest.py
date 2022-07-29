@@ -15,7 +15,7 @@ class Questioner:
         err_list = []
 
         if answer is None:
-            err_list.append("[Error] vec is none")
+            err_list.append("[Error] answer is none")
         else:
             vec_size = len(answer)
             if vec_size != 5:
