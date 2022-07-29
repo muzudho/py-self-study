@@ -850,4 +850,156 @@ correct!
 ![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
 「　テストを試そうってのね」  
 
+### O1o7o1o0 answerer
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のファイルを新規作成してくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o6o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o7o0
+👉  │   │   │   └── 📄 __init__.py
+    │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+"""
+Example
+-------
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o7o0 --ac Answerer
+"""
+import re
+import random
+
+from ..o1o0g1o6o0 import Answerer as AnswererG1o6o0
+#    ------------        --------    --------------
+#    1                   2           3
+# 1. 隣のフォルダー
+# 2. クラス
+# 3. 別名
+
+
+class Answerer:
+    """Non-numeric separated value"""
+
+    # * `^` - 文の始端
+    # * `\d` - 半角数字
+    # * `\d+` - 半角数字（1つ以上）
+    # * `( )` - キャプチャーグループ
+    __pat_num = re.compile(r"^(\d+)")
+    # * `\D` - 半角数字以外
+    __pat_nonnum = re.compile(r"^(\D+)")
+
+    @staticmethod
+    def to_answer(quiz):
+        answer = AnswererG1o6o0.to_answer(quiz)
+
+        # 要素数
+        length = len(answer)
+
+        # 要素が２個に満たなければスワップできません
+        if length <= 2:
+            raise ValueError(f"Couldn't swap. length:{length}")
+
+        # ランダムなインデックスを２つ取得
+        i1 = random.randint(1, length-1)
+        i2 = random.randint(0, i1-1)
+
+        # スワップ
+        temp = answer[i1]
+        answer[i1] = answer[i2]
+        answer[i2] = temp
+
+        return answer
+```
+
+### O1o7o2o0 検索パス
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下の既存ファイルの冒頭に１行追加してくれだぜ」  
+
+```plaintext
+    ├── 📂 src
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o2o0    
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o3o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o4o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o6o0
+    │   │   │   └── 📄 __init__.py
+    │   │   ├── 📂 o1o0g1o7o0
+    │   │   │   └── 📄 __init__.py
+👉  │   │   └── 📄 __init__.py
+    │   └── 📄 __init__.py
+    ├── 📂 tests
+    │   ├── 📂 general
+    │   │   └── 📂 o1o0g1o1o0
+    │   │       └── 📄 test.py
+    │   ├── 📂 nonnumsv
+    │   │   ├── 📂 o1o0g1o1o0
+    │   │   │   └── 📄 quest.py
+    │   │   └── 📂 o1o0g1o5o0
+    │   │       └── 📄 quest.py
+    │   └── 📄 __init__.py
+    ├── 📄 .gitignore
+    ├── 📄 LICENSE
+    └── 📄 README.md
+```
+
+```py
+# ...略...
+
+
+from .o1o0g1o7o0 import Answerer as AnswererO1o0g1o7o0
+
+
+# ...略...
+```
+
+### O1o7o3o0 コマンド
+
+![202101__character__31--ramen-tabero-futsu2.png](https://crieit.now.sh/upload_images/5b53e954894672b36c716412a272826b62de6036b15fb.png)  
+「　👇 以下のコマンドを打鍵してくれだぜ」  
+
+Input:  
+
+```plaintext
+python -m tests.general.o1o0g1o1o0.test --qm tests.nonnumsv.o1o0g1o5o0.quest --qc Questioner --am src.nonnumsv.o1o0g1o7o0 --ac Answerer
+```
+
+Output:  
+
+```plaintext
+> actual  :75yO?;tm@/W&zj)Rq<u,LHIx^+>T~AV[vd:0$}"B8J=DU\*(ZlgFo1bp3efEk`iK9QN-6P{C]h.4%sar!2_w'#MYGX|Scn
+> expected:m@/W&zj)Rq<u,5yO?;t7LHIx^+>T~AV[vd:0$}"B8J=DU\*(ZlgFo1bp3efEk`iK9QN-6P{C]h.4%sar!2_w'#MYGX|Scn
+```
+
+![202108__character__12--ohkina-hiyoko-futsu2.png](https://crieit.now.sh/upload_images/31f0f35be3a4b6b05ce597c7aab702b762de606300faf.png)  
+「　スワップしたのだから、エラーになって当然よ」  
+
 おわり
